@@ -5,7 +5,7 @@ module.exports = {
   async getAllnumbersOfUser(req, res) {
     try {
         const numberCollection = await number.findAll(req.params.userId, { include: ["Users"] });
-        res.status(201).send(numberCollection)
+        res.status(200).send(numberCollection)
       }catch (e) {
       console.log(e)
       res.status(500).send(e)
@@ -21,7 +21,7 @@ module.exports = {
       res.status(201).send(number)
     } catch (e) {
       console.log(e)
-      res.status(400).send(e)
+      res.status(500).send(e)
     }
   },
   // update number of a given user
@@ -40,7 +40,7 @@ module.exports = {
       }
     } catch (e) {
       console.log(e)
-      res.status(400).send(e)
+      res.status(500).send(e)
     }
   },
 
@@ -54,13 +54,13 @@ async deletenumber(req, res) {
       const updatednumber = await numberCollection.destroy({
         number: updatednumber
       })
-      res.status(201).send(updatednumber)
+      res.status(200).send(updatednumber)
     } else {
       res.status(404).send("number Not Found")
     }
   } catch (e) {
     console.log(e)
-    res.status(400).send(e)
+    res.status(500).send(e)
   }
 },
 }

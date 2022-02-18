@@ -5,7 +5,7 @@ module.exports = {
   async getAllUsers(req, res) {
     try {
       const userCollection = await User.findAll(req.params.userId, { include: ["numbers"] });
-      res.status(201).send(userCollection)
+      res.status(200).send(userCollection)
     } catch (e) {
       console.log(e)
       res.status(500).send(e)
@@ -15,7 +15,7 @@ module.exports = {
   async getUser(req, res) {
     try {
       const userCollection = await User.findByPk(req.params.userId, { include: ["numbers"] });
-      res.status(201).send(userCollection)
+      res.status(200).send(userCollection)
     } catch (e) {
       console.log(e)
       res.status(500).send(e)
